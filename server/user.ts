@@ -8,7 +8,7 @@ export async function signIn(email: string, password: string) {
       body: {
         email,
         password,
-      }
+      },
     })
 
     return { success: true, message: "Sign-in successful" }
@@ -24,8 +24,8 @@ export async function signUp(email: string, password: string, username: string) 
       body: {
         email,
         password,
-        name: username
-      }
+        name: username,
+      },
     })
     return { success: true, message: "Sign-up successful" }
   } catch (error) {

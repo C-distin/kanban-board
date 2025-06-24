@@ -58,9 +58,9 @@ export const boards = pgTable("boards", {
   title: text("title").notNull(),
   description: text("description"),
   color: text("color").notNull().default("#3B82F6"),
-  userId: text("user_id")
+  userId: uuid("user_id")
     .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
+    .references(() => user.id),
   isPublic: boolean("is_public").notNull().default(false),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
@@ -70,7 +70,7 @@ export const columns = pgTable("columns", {
   id: uuid("id").primaryKey().defaultRandom(),
   title: text("title").notNull(),
   boardId: uuid("board_id")
-    .references(() => boards.id, { onDelete: "cascade" })
+    .references(() => boards.id)
     .notNull(),
   position: integer("position").notNull().default(0),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -82,7 +82,7 @@ export const cards = pgTable("cards", {
   title: text("title").notNull(),
   description: text("description"),
   columnId: uuid("column_id")
-    .references(() => columns.id, { onDelete: "cascade" })
+    .references(() => columns.id)
     .notNull(),
   position: integer("position").notNull().default(0),
   priority: text("priority").notNull().default("medium"), // low, medium, high

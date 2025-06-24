@@ -23,5 +23,5 @@ export const auth = betterAuth({
   plugins: [nextCookies()],
 })
 
-export type User = typeof auth.$Infer.User
-export type Session = typeof auth.$Infer.Session
+// export type User = typeof auth.$Infer.User
+// export type Session = typeof auth.$Infer.Session
